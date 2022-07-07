@@ -17,7 +17,7 @@ pipeline {
         }
         stage('2-Test') {
             steps {
-                robot -d results tests
+                shell robot -d results tests
                 echo "End of Stage Build..."
             }
         }
