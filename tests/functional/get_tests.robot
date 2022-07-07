@@ -7,7 +7,7 @@ Test Teardown  Delete Test Data
 *** Test Cases ***
 Check get
     ${response}  get on session  ${session_alias}  ${pet_uri_id}
-    Check response  ${response}  ${get_args}
+    Check response  ${response}  &{get_args}
 
 Get Pet After Put
     ${json}  Prepare json for put
