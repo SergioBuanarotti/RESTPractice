@@ -16,7 +16,6 @@ pipeline {
         stage('2-Test') {
             steps {
                 sh 'python3 -m robot -d results tests'
-                echo "End of Stage Build..."
             }
         }
         stage('3-Deploy') {
@@ -29,11 +28,6 @@ pipeline {
                    echo "Line2"
                 '''
                 echo "End of Stage Build..."
-            }
-        }
-        stage('4-Celebrate') {
-            steps {
-                echo "CONGRATULYACIYA!"
             }
         }	
     }
