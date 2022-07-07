@@ -9,7 +9,7 @@ pipeline {
         stage('1-Build') {
             steps {
                 echo "Start Building dependencies..."
-                python3 -m virtualenv venv
+                shell python3 -m virtualenv venv
                 source venv/bin/activate
                 pip3 install -r requirements.txt
                 
