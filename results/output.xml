@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220707 14:32:03.933" rpa="false" schemaversion="3">
+<suite id="s1" name="Tests" source="C:\Users\sergey.gushchin\PycharmProjects\RESTPractice\tests">
+<suite id="s1-s1" name="Functional" source="C:\Users\sergey.gushchin\PycharmProjects\RESTPractice\tests\functional">
+<suite id="s1-s1-s1" name="Get Tests" source="C:\Users\sergey.gushchin\PycharmProjects\RESTPractice\tests\functional\get_tests.robot">
+<test id="s1-s1-s1-t1" name="Check get" line="8">
+<kw name="Prepare pet data" library="data" type="SETUP">
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${json}</var>
+<arg>resources/post_data.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220707 14:32:04.096" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'doggie', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:04.095" endtime="20220707 14:32:04.096"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${base_url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220707 14:32:04.096" level="INFO">Creating Session using : alias=alias, url=https://petstore.swagger.io/v2, headers={'content-type': 'application/json', 'accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220707 14:32:04.096" endtime="20220707 14:32:04.097"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri}</arg>
+<arg>json=${json}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:04.665" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '155'} 
+ body=b'{"id": 4, "category": {"id": 0, "name": "string"}, "name": "doggie", "photoUrls": ["string"], "tags": [{"id": 0, "name": "string"}], "status": "avialable"}' 
+ </msg>
+<msg timestamp="20220707 14:32:04.665" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:05 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:04.665" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:04.097" endtime="20220707 14:32:04.666"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.095" endtime="20220707 14:32:04.666"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:04.804" level="INFO">GET Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:04.804" level="INFO">GET Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:05 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:04.804" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220707 14:32:04.804" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220707 14:32:04.667" endtime="20220707 14:32:04.804"/>
+</kw>
+<kw name="Check response" library="data">
+<arg>${response}</arg>
+<arg>&amp;{get_args}</arg>
+<for flavor="IN">
+<var>${key}</var>
+<value>@{args.keys()}</value>
+<iter>
+<var name="${key}">id</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:04.807" level="INFO">${value} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:04.806" endtime="20220707 14:32:04.807"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:04.807" level="INFO">${json_val} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:04.807" endtime="20220707 14:32:04.807"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:04.807" endtime="20220707 14:32:04.808"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.806" endtime="20220707 14:32:04.808"/>
+</iter>
+<iter>
+<var name="${key}">name</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:04.808" level="INFO">${value} = doggie</msg>
+<status status="PASS" starttime="20220707 14:32:04.808" endtime="20220707 14:32:04.808"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:04.809" level="INFO">${json_val} = doggie</msg>
+<status status="PASS" starttime="20220707 14:32:04.808" endtime="20220707 14:32:04.809"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:04.809" endtime="20220707 14:32:04.809"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.808" endtime="20220707 14:32:04.809"/>
+</iter>
+<iter>
+<var name="${key}">status</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:04.810" level="INFO">${value} = avialable</msg>
+<status status="PASS" starttime="20220707 14:32:04.810" endtime="20220707 14:32:04.810"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:04.811" level="INFO">${json_val} = avialable</msg>
+<status status="PASS" starttime="20220707 14:32:04.810" endtime="20220707 14:32:04.811"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:04.811" endtime="20220707 14:32:04.811"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.809" endtime="20220707 14:32:04.811"/>
+</iter>
+<status status="PASS" starttime="20220707 14:32:04.805" endtime="20220707 14:32:04.811"/>
+</for>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>${status_code}</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:32:04.812" endtime="20220707 14:32:04.812"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.805" endtime="20220707 14:32:04.812"/>
+</kw>
+<kw name="Delete Test Data" library="data" type="TEARDOWN">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:04.950" level="INFO">DELETE Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:04.950" level="INFO">DELETE Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:05 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"4"} 
+ </msg>
+<msg timestamp="20220707 14:32:04.950" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:04.813" endtime="20220707 14:32:04.950"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20220707 14:32:04.951" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20220707 14:32:04.950" endtime="20220707 14:32:04.951"/>
+</kw>
+<kw name="Session Exists" library="RequestsLibrary">
+<var>${session_exist}</var>
+<arg>${session_alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<msg timestamp="20220707 14:32:04.951" level="INFO">${session_exist} = False</msg>
+<status status="PASS" starttime="20220707 14:32:04.951" endtime="20220707 14:32:04.951"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${session_exist}</arg>
+<arg>${False}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:04.951" endtime="20220707 14:32:04.951"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.812" endtime="20220707 14:32:04.951"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.094" endtime="20220707 14:32:04.952"/>
+</test>
+<test id="s1-s1-s1-t2" name="Get Pet After Put" line="12">
+<kw name="Prepare pet data" library="data" type="SETUP">
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${json}</var>
+<arg>resources/post_data.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220707 14:32:04.955" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'doggie', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:04.954" endtime="20220707 14:32:04.955"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${base_url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220707 14:32:04.955" level="INFO">Creating Session using : alias=alias, url=https://petstore.swagger.io/v2, headers={'content-type': 'application/json', 'accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220707 14:32:04.955" endtime="20220707 14:32:04.955"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri}</arg>
+<arg>json=${json}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:05.517" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '155'} 
+ body=b'{"id": 4, "category": {"id": 0, "name": "string"}, "name": "doggie", "photoUrls": ["string"], "tags": [{"id": 0, "name": "string"}], "status": "avialable"}' 
+ </msg>
+<msg timestamp="20220707 14:32:05.517" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:06 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:05.517" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:04.955" endtime="20220707 14:32:05.518"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.954" endtime="20220707 14:32:05.518"/>
+</kw>
+<kw name="Prepare json for put" library="data">
+<var>${json}</var>
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${json}</var>
+<arg>resources/post_data.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220707 14:32:05.519" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'doggie', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:05.518" endtime="20220707 14:32:05.519"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${json}</arg>
+<arg>name=dog</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220707 14:32:05.519" endtime="20220707 14:32:05.519"/>
+</kw>
+<return>
+<value>${json}</value>
+<status status="PASS" starttime="20220707 14:32:05.519" endtime="20220707 14:32:05.519"/>
+</return>
+<msg timestamp="20220707 14:32:05.520" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'dog', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:05.518" endtime="20220707 14:32:05.520"/>
+</kw>
+<kw name="PUT On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri}</arg>
+<arg>json=${json}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:05.658" level="INFO">PUT Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '152'} 
+ body=b'{"id": 4, "category": {"id": 0, "name": "string"}, "name": "dog", "photoUrls": ["string"], "tags": [{"id": 0, "name": "string"}], "status": "avialable"}' 
+ </msg>
+<msg timestamp="20220707 14:32:05.658" level="INFO">PUT Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:06 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"dog","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:05.658" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:05.520" endtime="20220707 14:32:05.659"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:05.796" level="INFO">GET Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:05.796" level="INFO">GET Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:06 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"dog","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:05.796" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220707 14:32:05.797" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220707 14:32:05.659" endtime="20220707 14:32:05.797"/>
+</kw>
+<kw name="Check response" library="data">
+<arg>${response}</arg>
+<arg>&amp;{put_args}</arg>
+<for flavor="IN">
+<var>${key}</var>
+<value>@{args.keys()}</value>
+<iter>
+<var name="${key}">id</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:05.799" level="INFO">${value} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:05.798" endtime="20220707 14:32:05.799"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:05.800" level="INFO">${json_val} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:05.799" endtime="20220707 14:32:05.800"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:05.800" endtime="20220707 14:32:05.800"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:05.798" endtime="20220707 14:32:05.800"/>
+</iter>
+<iter>
+<var name="${key}">name</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:05.801" level="INFO">${value} = dog</msg>
+<status status="PASS" starttime="20220707 14:32:05.800" endtime="20220707 14:32:05.801"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:05.801" level="INFO">${json_val} = dog</msg>
+<status status="PASS" starttime="20220707 14:32:05.801" endtime="20220707 14:32:05.802"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:05.802" endtime="20220707 14:32:05.802"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:05.800" endtime="20220707 14:32:05.802"/>
+</iter>
+<iter>
+<var name="${key}">status</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:05.803" level="INFO">${value} = avialable</msg>
+<status status="PASS" starttime="20220707 14:32:05.802" endtime="20220707 14:32:05.803"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:05.803" level="INFO">${json_val} = avialable</msg>
+<status status="PASS" starttime="20220707 14:32:05.803" endtime="20220707 14:32:05.803"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:05.803" endtime="20220707 14:32:05.804"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:05.802" endtime="20220707 14:32:05.804"/>
+</iter>
+<status status="PASS" starttime="20220707 14:32:05.798" endtime="20220707 14:32:05.804"/>
+</for>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>${status_code}</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:32:05.804" endtime="20220707 14:32:05.804"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:05.797" endtime="20220707 14:32:05.804"/>
+</kw>
+<kw name="Delete Test Data" library="data" type="TEARDOWN">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:05.942" level="INFO">DELETE Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:05.942" level="INFO">DELETE Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:06 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"4"} 
+ </msg>
+<msg timestamp="20220707 14:32:05.943" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:05.805" endtime="20220707 14:32:05.943"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20220707 14:32:05.943" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20220707 14:32:05.943" endtime="20220707 14:32:05.943"/>
+</kw>
+<kw name="Session Exists" library="RequestsLibrary">
+<var>${session_exist}</var>
+<arg>${session_alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<msg timestamp="20220707 14:32:05.944" level="INFO">${session_exist} = False</msg>
+<status status="PASS" starttime="20220707 14:32:05.943" endtime="20220707 14:32:05.944"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${session_exist}</arg>
+<arg>${False}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:05.944" endtime="20220707 14:32:05.944"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:05.805" endtime="20220707 14:32:05.944"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:04.953" endtime="20220707 14:32:05.944"/>
+</test>
+<test id="s1-s1-s1-t3" name="Get after post update" line="18">
+<kw name="Prepare pet data" library="data" type="SETUP">
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${json}</var>
+<arg>resources/post_data.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220707 14:32:05.947" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'doggie', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:05.946" endtime="20220707 14:32:05.947"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${base_url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220707 14:32:05.947" level="INFO">Creating Session using : alias=alias, url=https://petstore.swagger.io/v2, headers={'content-type': 'application/json', 'accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220707 14:32:05.947" endtime="20220707 14:32:05.947"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri}</arg>
+<arg>json=${json}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:06.509" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '155'} 
+ body=b'{"id": 4, "category": {"id": 0, "name": "string"}, "name": "doggie", "photoUrls": ["string"], "tags": [{"id": 0, "name": "string"}], "status": "avialable"}' 
+ </msg>
+<msg timestamp="20220707 14:32:06.509" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:07 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:06.509" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:05.947" endtime="20220707 14:32:06.510"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:05.946" endtime="20220707 14:32:06.510"/>
+</kw>
+<kw name="Update Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>headers=${form_headers}</arg>
+<doc>Updates HTTP Session Headers and Cookies.</doc>
+<status status="PASS" starttime="20220707 14:32:06.510" endtime="20220707 14:32:06.511"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<arg>data=${files}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:06.648" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/x-www-form-urlencoded', 'Content-Length': '20'} 
+ body=name=ret&amp;status=done 
+ </msg>
+<msg timestamp="20220707 14:32:06.648" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:07 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"4"} 
+ </msg>
+<msg timestamp="20220707 14:32:06.648" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:06.511" endtime="20220707 14:32:06.649"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:06.786" level="INFO">GET Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/x-www-form-urlencoded'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:06.786" level="INFO">GET Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:07 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"ret","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"done"} 
+ </msg>
+<msg timestamp="20220707 14:32:06.786" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220707 14:32:06.787" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220707 14:32:06.649" endtime="20220707 14:32:06.787"/>
+</kw>
+<kw name="Check response" library="data">
+<arg>${response}</arg>
+<arg>&amp;{after_post_args}</arg>
+<for flavor="IN">
+<var>${key}</var>
+<value>@{args.keys()}</value>
+<iter>
+<var name="${key}">id</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:06.789" level="INFO">${value} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:06.788" endtime="20220707 14:32:06.789"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:06.790" level="INFO">${json_val} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:06.789" endtime="20220707 14:32:06.790"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:06.790" endtime="20220707 14:32:06.790"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:06.788" endtime="20220707 14:32:06.790"/>
+</iter>
+<iter>
+<var name="${key}">name</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:06.791" level="INFO">${value} = ret</msg>
+<status status="PASS" starttime="20220707 14:32:06.790" endtime="20220707 14:32:06.791"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:06.792" level="INFO">${json_val} = ret</msg>
+<status status="PASS" starttime="20220707 14:32:06.791" endtime="20220707 14:32:06.792"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:06.792" endtime="20220707 14:32:06.792"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:06.790" endtime="20220707 14:32:06.792"/>
+</iter>
+<iter>
+<var name="${key}">status</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:06.793" level="INFO">${value} = done</msg>
+<status status="PASS" starttime="20220707 14:32:06.792" endtime="20220707 14:32:06.793"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:06.793" level="INFO">${json_val} = done</msg>
+<status status="PASS" starttime="20220707 14:32:06.793" endtime="20220707 14:32:06.793"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:06.793" endtime="20220707 14:32:06.794"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:06.792" endtime="20220707 14:32:06.794"/>
+</iter>
+<status status="PASS" starttime="20220707 14:32:06.788" endtime="20220707 14:32:06.794"/>
+</for>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>${status_code}</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:32:06.794" endtime="20220707 14:32:06.794"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:06.787" endtime="20220707 14:32:06.794"/>
+</kw>
+<kw name="Delete Test Data" library="data" type="TEARDOWN">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:06.933" level="INFO">DELETE Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/x-www-form-urlencoded', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:06.933" level="INFO">DELETE Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:07 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"4"} 
+ </msg>
+<msg timestamp="20220707 14:32:06.933" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:06.795" endtime="20220707 14:32:06.933"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20220707 14:32:06.934" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20220707 14:32:06.934" endtime="20220707 14:32:06.934"/>
+</kw>
+<kw name="Session Exists" library="RequestsLibrary">
+<var>${session_exist}</var>
+<arg>${session_alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<msg timestamp="20220707 14:32:06.934" level="INFO">${session_exist} = False</msg>
+<status status="PASS" starttime="20220707 14:32:06.934" endtime="20220707 14:32:06.934"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${session_exist}</arg>
+<arg>${False}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:06.934" endtime="20220707 14:32:06.934"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:06.795" endtime="20220707 14:32:06.934"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:05.946" endtime="20220707 14:32:06.935"/>
+</test>
+<test id="s1-s1-s1-t4" name="Post Update Pet" line="24">
+<kw name="Prepare pet data" library="data" type="SETUP">
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${json}</var>
+<arg>resources/post_data.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220707 14:32:06.937" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'doggie', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:06.937" endtime="20220707 14:32:06.937"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${base_url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220707 14:32:06.938" level="INFO">Creating Session using : alias=alias, url=https://petstore.swagger.io/v2, headers={'content-type': 'application/json', 'accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220707 14:32:06.937" endtime="20220707 14:32:06.938"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri}</arg>
+<arg>json=${json}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:07.500" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '155'} 
+ body=b'{"id": 4, "category": {"id": 0, "name": "string"}, "name": "doggie", "photoUrls": ["string"], "tags": [{"id": 0, "name": "string"}], "status": "avialable"}' 
+ </msg>
+<msg timestamp="20220707 14:32:07.500" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:08 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:07.500" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:06.938" endtime="20220707 14:32:07.501"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:06.936" endtime="20220707 14:32:07.501"/>
+</kw>
+<kw name="Update Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>headers=${form_headers}</arg>
+<doc>Updates HTTP Session Headers and Cookies.</doc>
+<status status="PASS" starttime="20220707 14:32:07.501" endtime="20220707 14:32:07.502"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<arg>data=${files}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:07.640" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/x-www-form-urlencoded', 'Content-Length': '20'} 
+ body=name=ret&amp;status=done 
+ </msg>
+<msg timestamp="20220707 14:32:07.640" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:08 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"4"} 
+ </msg>
+<msg timestamp="20220707 14:32:07.640" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220707 14:32:07.640" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220707 14:32:07.502" endtime="20220707 14:32:07.640"/>
+</kw>
+<kw name="Check response" library="data">
+<arg>${response}</arg>
+<arg>&amp;{del_post_args}</arg>
+<arg>code=${response.status_code}</arg>
+<for flavor="IN">
+<var>${key}</var>
+<value>@{args.keys()}</value>
+<iter>
+<var name="${key}">type</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:07.643" level="INFO">${value} = unknown</msg>
+<status status="PASS" starttime="20220707 14:32:07.643" endtime="20220707 14:32:07.643"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:07.644" level="INFO">${json_val} = unknown</msg>
+<status status="PASS" starttime="20220707 14:32:07.643" endtime="20220707 14:32:07.644"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:07.644" endtime="20220707 14:32:07.644"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:07.642" endtime="20220707 14:32:07.644"/>
+</iter>
+<iter>
+<var name="${key}">message</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:07.645" level="INFO">${value} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:07.645" endtime="20220707 14:32:07.645"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:07.646" level="INFO">${json_val} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:07.645" endtime="20220707 14:32:07.646"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:07.646" endtime="20220707 14:32:07.646"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:07.645" endtime="20220707 14:32:07.646"/>
+</iter>
+<iter>
+<var name="${key}">code</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:07.647" level="INFO">${value} = 200</msg>
+<status status="PASS" starttime="20220707 14:32:07.646" endtime="20220707 14:32:07.647"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:07.648" level="INFO">${json_val} = 200</msg>
+<status status="PASS" starttime="20220707 14:32:07.647" endtime="20220707 14:32:07.648"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:07.648" endtime="20220707 14:32:07.648"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:07.646" endtime="20220707 14:32:07.648"/>
+</iter>
+<status status="PASS" starttime="20220707 14:32:07.642" endtime="20220707 14:32:07.648"/>
+</for>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>${status_code}</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:32:07.648" endtime="20220707 14:32:07.649"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:07.641" endtime="20220707 14:32:07.649"/>
+</kw>
+<kw name="Delete Test Data" library="data" type="TEARDOWN">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:07.787" level="INFO">DELETE Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/x-www-form-urlencoded', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:07.787" level="INFO">DELETE Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:08 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"4"} 
+ </msg>
+<msg timestamp="20220707 14:32:07.787" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:07.649" endtime="20220707 14:32:07.787"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20220707 14:32:07.788" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20220707 14:32:07.788" endtime="20220707 14:32:07.788"/>
+</kw>
+<kw name="Session Exists" library="RequestsLibrary">
+<var>${session_exist}</var>
+<arg>${session_alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<msg timestamp="20220707 14:32:07.788" level="INFO">${session_exist} = False</msg>
+<status status="PASS" starttime="20220707 14:32:07.788" endtime="20220707 14:32:07.788"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${session_exist}</arg>
+<arg>${False}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:07.788" endtime="20220707 14:32:07.789"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:07.649" endtime="20220707 14:32:07.789"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:06.936" endtime="20220707 14:32:07.789"/>
+</test>
+<test id="s1-s1-s1-t5" name="Put Update Pet" line="29">
+<kw name="Prepare pet data" library="data" type="SETUP">
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${json}</var>
+<arg>resources/post_data.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220707 14:32:07.791" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'doggie', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:07.791" endtime="20220707 14:32:07.791"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${base_url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220707 14:32:07.792" level="INFO">Creating Session using : alias=alias, url=https://petstore.swagger.io/v2, headers={'content-type': 'application/json', 'accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220707 14:32:07.791" endtime="20220707 14:32:07.792"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri}</arg>
+<arg>json=${json}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:08.386" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '155'} 
+ body=b'{"id": 4, "category": {"id": 0, "name": "string"}, "name": "doggie", "photoUrls": ["string"], "tags": [{"id": 0, "name": "string"}], "status": "avialable"}' 
+ </msg>
+<msg timestamp="20220707 14:32:08.386" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:09 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:08.387" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:07.792" endtime="20220707 14:32:08.387"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:07.791" endtime="20220707 14:32:08.387"/>
+</kw>
+<kw name="Prepare json for put" library="data">
+<var>${json}</var>
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${json}</var>
+<arg>resources/post_data.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220707 14:32:08.388" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'doggie', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:08.388" endtime="20220707 14:32:08.388"/>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${json}</arg>
+<arg>name=dog</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220707 14:32:08.388" endtime="20220707 14:32:08.389"/>
+</kw>
+<return>
+<value>${json}</value>
+<status status="PASS" starttime="20220707 14:32:08.389" endtime="20220707 14:32:08.389"/>
+</return>
+<msg timestamp="20220707 14:32:08.389" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'dog', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:08.387" endtime="20220707 14:32:08.389"/>
+</kw>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${session_alias}</arg>
+<arg>${pet_uri}</arg>
+<arg>json=${json}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:08.534" level="INFO">PUT Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '152'} 
+ body=b'{"id": 4, "category": {"id": 0, "name": "string"}, "name": "dog", "photoUrls": ["string"], "tags": [{"id": 0, "name": "string"}], "status": "avialable"}' 
+ </msg>
+<msg timestamp="20220707 14:32:08.534" level="INFO">PUT Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:09 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"dog","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:08.534" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220707 14:32:08.535" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220707 14:32:08.389" endtime="20220707 14:32:08.535"/>
+</kw>
+<kw name="Check response" library="data">
+<arg>${response}</arg>
+<arg>&amp;{put_args}</arg>
+<for flavor="IN">
+<var>${key}</var>
+<value>@{args.keys()}</value>
+<iter>
+<var name="${key}">id</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:08.538" level="INFO">${value} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:08.537" endtime="20220707 14:32:08.538"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:08.538" level="INFO">${json_val} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:08.538" endtime="20220707 14:32:08.538"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:08.539" endtime="20220707 14:32:08.539"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:08.537" endtime="20220707 14:32:08.539"/>
+</iter>
+<iter>
+<var name="${key}">name</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:08.540" level="INFO">${value} = dog</msg>
+<status status="PASS" starttime="20220707 14:32:08.539" endtime="20220707 14:32:08.540"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:08.540" level="INFO">${json_val} = dog</msg>
+<status status="PASS" starttime="20220707 14:32:08.540" endtime="20220707 14:32:08.540"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:08.540" endtime="20220707 14:32:08.541"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:08.539" endtime="20220707 14:32:08.541"/>
+</iter>
+<iter>
+<var name="${key}">status</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:08.541" level="INFO">${value} = avialable</msg>
+<status status="PASS" starttime="20220707 14:32:08.541" endtime="20220707 14:32:08.541"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:08.542" level="INFO">${json_val} = avialable</msg>
+<status status="PASS" starttime="20220707 14:32:08.542" endtime="20220707 14:32:08.542"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:08.542" endtime="20220707 14:32:08.542"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:08.541" endtime="20220707 14:32:08.542"/>
+</iter>
+<status status="PASS" starttime="20220707 14:32:08.536" endtime="20220707 14:32:08.542"/>
+</for>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>${status_code}</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:32:08.543" endtime="20220707 14:32:08.543"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:08.535" endtime="20220707 14:32:08.543"/>
+</kw>
+<kw name="Delete Test Data" library="data" type="TEARDOWN">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:08.692" level="INFO">DELETE Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:08.692" level="INFO">DELETE Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:09 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"4"} 
+ </msg>
+<msg timestamp="20220707 14:32:08.692" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:08.544" endtime="20220707 14:32:08.693"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20220707 14:32:08.693" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20220707 14:32:08.693" endtime="20220707 14:32:08.693"/>
+</kw>
+<kw name="Session Exists" library="RequestsLibrary">
+<var>${session_exist}</var>
+<arg>${session_alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<msg timestamp="20220707 14:32:08.694" level="INFO">${session_exist} = False</msg>
+<status status="PASS" starttime="20220707 14:32:08.693" endtime="20220707 14:32:08.694"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${session_exist}</arg>
+<arg>${False}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:08.694" endtime="20220707 14:32:08.694"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:08.543" endtime="20220707 14:32:08.694"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:07.790" endtime="20220707 14:32:08.694"/>
+</test>
+<test id="s1-s1-s1-t6" name="Delete Pet" line="34">
+<kw name="Prepare pet data" library="data" type="SETUP">
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${json}</var>
+<arg>resources/post_data.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220707 14:32:08.697" level="INFO">${json} = {'id': 4, 'category': {'id': 0, 'name': 'string'}, 'name': 'doggie', 'photoUrls': ['string'], 'tags': [{'id': 0, 'name': 'string'}], 'status': 'avialable'}</msg>
+<status status="PASS" starttime="20220707 14:32:08.696" endtime="20220707 14:32:08.697"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${base_url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220707 14:32:08.697" level="INFO">Creating Session using : alias=alias, url=https://petstore.swagger.io/v2, headers={'content-type': 'application/json', 'accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220707 14:32:08.697" endtime="20220707 14:32:08.698"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>${session_alias}</arg>
+<arg>${pet_uri}</arg>
+<arg>json=${json}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:09.293" level="INFO">POST Request : url=https://petstore.swagger.io/v2/pet 
+ path_url=/v2/pet 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '155'} 
+ body=b'{"id": 4, "category": {"id": 0, "name": "string"}, "name": "doggie", "photoUrls": ["string"], "tags": [{"id": 0, "name": "string"}], "status": "avialable"}' 
+ </msg>
+<msg timestamp="20220707 14:32:09.293" level="INFO">POST Response : url=https://petstore.swagger.io/v2/pet 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:09 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":4,"category":{"id":0,"name":"string"},"name":"doggie","photoUrls":["string"],"tags":[{"id":0,"name":"string"}],"status":"avialable"} 
+ </msg>
+<msg timestamp="20220707 14:32:09.293" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20220707 14:32:08.698" endtime="20220707 14:32:09.297"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:08.696" endtime="20220707 14:32:09.297"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${session_alias}</arg>
+<arg>${pet_uri_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20220707 14:32:09.444" level="INFO">DELETE Request : url=https://petstore.swagger.io/v2/pet/4 
+ path_url=/v2/pet/4 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:09.444" level="INFO">DELETE Response : url=https://petstore.swagger.io/v2/pet/4 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:10 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"4"} 
+ </msg>
+<msg timestamp="20220707 14:32:09.444" level="INFO">c:\users\sergey.gushchin\pycharmprojects\restpractice\venv\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'petstore.swagger.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220707 14:32:09.445" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220707 14:32:09.298" endtime="20220707 14:32:09.445"/>
+</kw>
+<kw name="Check response" library="data">
+<arg>${response}</arg>
+<arg>&amp;{del_post_args}</arg>
+<arg>code=${response.status_code}</arg>
+<for flavor="IN">
+<var>${key}</var>
+<value>@{args.keys()}</value>
+<iter>
+<var name="${key}">type</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:09.447" level="INFO">${value} = unknown</msg>
+<status status="PASS" starttime="20220707 14:32:09.447" endtime="20220707 14:32:09.447"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:09.448" level="INFO">${json_val} = unknown</msg>
+<status status="PASS" starttime="20220707 14:32:09.447" endtime="20220707 14:32:09.448"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:09.448" endtime="20220707 14:32:09.448"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:09.447" endtime="20220707 14:32:09.448"/>
+</iter>
+<iter>
+<var name="${key}">message</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:09.449" level="INFO">${value} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:09.448" endtime="20220707 14:32:09.449"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:09.450" level="INFO">${json_val} = 4</msg>
+<status status="PASS" starttime="20220707 14:32:09.449" endtime="20220707 14:32:09.450"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:09.450" endtime="20220707 14:32:09.450"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:09.448" endtime="20220707 14:32:09.450"/>
+</iter>
+<iter>
+<var name="${key}">code</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${value}</var>
+<arg>${args["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:09.451" level="INFO">${value} = 200</msg>
+<status status="PASS" starttime="20220707 14:32:09.450" endtime="20220707 14:32:09.451"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${json_val}</var>
+<arg>${response.json()["${key}"]}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220707 14:32:09.451" level="INFO">${json_val} = 200</msg>
+<status status="PASS" starttime="20220707 14:32:09.451" endtime="20220707 14:32:09.451"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${json_val}</arg>
+<arg>${value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:09.452" endtime="20220707 14:32:09.452"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:09.450" endtime="20220707 14:32:09.452"/>
+</iter>
+<status status="PASS" starttime="20220707 14:32:09.446" endtime="20220707 14:32:09.452"/>
+</for>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>${status_code}</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:32:09.452" endtime="20220707 14:32:09.452"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:09.445" endtime="20220707 14:32:09.452"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20220707 14:32:09.453" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20220707 14:32:09.453" endtime="20220707 14:32:09.453"/>
+</kw>
+<kw name="Session Exists" library="RequestsLibrary">
+<var>${session_exist}</var>
+<arg>${session_alias}</arg>
+<doc>Return True if the session has been already created</doc>
+<msg timestamp="20220707 14:32:09.454" level="INFO">${session_exist} = False</msg>
+<status status="PASS" starttime="20220707 14:32:09.453" endtime="20220707 14:32:09.454"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${session_exist}</arg>
+<arg>${False}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220707 14:32:09.454" endtime="20220707 14:32:09.454"/>
+</kw>
+<kw name="No Operation" library="BuiltIn" type="TEARDOWN">
+<doc>Does absolutely nothing.</doc>
+<status status="PASS" starttime="20220707 14:32:09.455" endtime="20220707 14:32:09.455"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:08.696" endtime="20220707 14:32:09.455"/>
+</test>
+<status status="PASS" starttime="20220707 14:32:03.960" endtime="20220707 14:32:09.456"/>
+</suite>
+<suite id="s1-s1-s2" name="Positive Tests" source="C:\Users\sergey.gushchin\PycharmProjects\RESTPractice\tests\functional\positive_tests.robot">
+<test id="s1-s1-s2-t1" name="get" line="8">
+<kw name="Evaluate" library="BuiltIn">
+<var>${auth}</var>
+<arg>${auth}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220707 14:32:09.462" level="INFO">${auth} = {'Authorization': 'Bearer 12'}</msg>
+<status status="PASS" starttime="20220707 14:32:09.461" endtime="20220707 14:32:09.462"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>http://httpbin.org/bearer</arg>
+<arg>headers=${auth}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20220707 14:32:09.770" level="INFO">GET Request : url=http://httpbin.org/bearer 
+ path_url=/bearer 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer 12'} 
+ body=None 
+ </msg>
+<msg timestamp="20220707 14:32:09.770" level="INFO">GET Response : url=http://httpbin.org/bearer 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 07 Jul 2022 11:32:10 GMT', 'Content-Type': 'application/json', 'Content-Length': '46', 'Connection': 'keep-alive', 'Server': 'gunicorn/19.9.0', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true'} 
+ body={
+  "authenticated": true, 
+  "token": "12"
+}
+ 
+ </msg>
+<msg timestamp="20220707 14:32:09.771" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220707 14:32:09.462" endtime="20220707 14:32:09.771"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220707 14:32:09.772" endtime="20220707 14:32:09.773"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220707 14:32:09.773" endtime="20220707 14:32:09.774"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220707 14:32:09.774" endtime="20220707 14:32:09.775"/>
+</kw>
+<status status="PASS" starttime="20220707 14:32:09.461" endtime="20220707 14:32:09.775"/>
+</test>
+<status status="PASS" starttime="20220707 14:32:09.457" endtime="20220707 14:32:09.776"/>
+</suite>
+<status status="PASS" starttime="20220707 14:32:03.958" endtime="20220707 14:32:09.778"/>
+</suite>
+<status status="PASS" starttime="20220707 14:32:03.935" endtime="20220707 14:32:09.780"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="7" fail="0" skip="0" id="s1-s1" name="Functional">Tests.Functional</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s1-s1" name="Get Tests">Tests.Functional.Get Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s2" name="Positive Tests">Tests.Functional.Positive Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
