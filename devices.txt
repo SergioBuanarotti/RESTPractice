@@ -1,6 +1,0 @@
-devices = {
-"baikal": ("1231","dump.har"),
-"nokia": ("3333","dump2.har"),
-"SM-A34gg": ("4444","dump3.har"),
-}
-amended string
